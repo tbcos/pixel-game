@@ -34,7 +34,6 @@ const GameScreen: React.FC<Props> = ({ userId, onFinish }) => {
   const [bossSeeds, setBossSeeds] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
   const GAS_URL = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL || '';
   const QUESTION_COUNT = parseInt(import.meta.env.VITE_QUESTION_COUNT || '5');
@@ -126,7 +125,6 @@ const GameScreen: React.FC<Props> = ({ userId, onFinish }) => {
   };
 
   if (isLoading) return <div className="loading-text">LOADING STAGE...</div>;
-  if (error) return <div style={{ color: 'var(--error-color)', maxWidth: '600px', lineHeight: '1.5' }}>{error}</div>;
   if (isSubmitting) return <div className="loading-text">CALCULATING SCORE...</div>;
   if (questions.length === 0) return <div>NO QUESTIONS FOUND.</div>;
 
